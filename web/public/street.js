@@ -8,6 +8,7 @@
     ["GM", "https://gm.aibusiness.fun/", "gm"],
     ["Mine", "https://mine.aibusiness.fun/", "mine"],
     ["Seats", "https://nft.aibusiness.fun/", "seats"],
+    ["Keys", "https://basefriend.tech/", "keys"],
   ];
 
   var glyphs = {
@@ -17,6 +18,7 @@
     gm: '<circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6.1 6.1l1.5 1.5M16.4 16.4l1.5 1.5M17.9 6.1l-1.5 1.5M7.6 16.4l-1.5 1.5"/>',
     mine: '<path d="M4 16.5 14 6.5l3.5 3.5-10 10z"/><path d="M13 7.5 16.5 4 20 7.5 16.5 11"/>',
     seats: '<rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="9" y="13.5" width="6.5" height="6.5" rx="1"/>',
+    keys: '<circle cx="8" cy="12" r="3.2"/><path d="M11 12h9M17 12v3M20 12v2"/>',
   };
 
   var host = location.hostname;
@@ -29,6 +31,7 @@
     if (key === "gm") return host === "gm.aibusiness.fun";
     if (key === "mine") return host === "mine.aibusiness.fun";
     if (key === "seats") return host === "nft.aibusiness.fun";
+    if (key === "keys") return host === "basefriend.tech";
     return false;
   }
 

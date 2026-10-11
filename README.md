@@ -11,15 +11,24 @@ One footer runs across the rooms. The street is on the left. The room you are in
 | Room | Where | What it is |
 | --- | --- | --- |
 | Book | https://doghood.aibusiness.fun/ | Night Ledger. The coin, the bow, the seed, the street. |
-| Floor | https://doghood.aibusiness.fun/floor | Desks that earn. The vault, the pit, the showroom. |
+| Floor | https://doghood.aibusiness.fun/floor | The pixel, then the tape, then a practice desk. |
 | Dex | https://dex.aibusiness.fun/ | Swaps and NFTs on Robinhood Chain. |
 | GM | https://gm.aibusiness.fun/ | On-chain GM streaks on Robinhood Chain. |
 | Mine | https://mine.aibusiness.fun/ | HOOD//MINE. A field. Three cuts. Source in `Laszlo23/hoodmine`. |
 | Seats | https://nft.aibusiness.fun/ | TICKPIX. Pixel seats on Robinhood Chain. |
+| Keys | https://basefriend.tech/ | BaseFriend. Keys for Farcaster creators and clubs, paid in DEGEN on Base. A key is a chat pass, not a share of the person. |
 | Aura OS | https://aibusiness.fun/ | The company operating system. Not part of the floor contracts. |
 | Aura Local | https://review.aibusiness.fun/ | Review requests after a real visit. |
 
 The shared footer script is `web/public/street.js`. The floor renders the same bar in `web/components/Street.tsx`. A room with its own tabs fills `#hood-app`, so those tabs start where the street ends.
+
+The same map, in plain words, is on the site at https://doghood.aibusiness.fun/floor/guide.
+
+## What you meet first
+
+1. The pixel. TICKPIX on Robinhood Chain. While the phase is public, a seat is 0.0001 ETH and a wallet can take five. The floor shows seats left and the latest mints. A seat is a pixel. It does not earn.
+2. The tape. Live USDG, the dollar pool, the NVDA token, the SPY token, and $HOOD. Sourced notes sit under the numbers. The full set is `/wire`. A Stock Token tracks a price and does not make the holder a shareholder.
+3. The practice desk. Mock coins on the practice table. The pit and the showroom are that same table. Come back for a new seat, a moved tape, or a till that changed while a shift was open.
 
 ## Two chains
 
@@ -120,7 +129,12 @@ Caddy strips `/floor` and proxies to that process. Desk links are `/floor/desk?i
 
 | Path | Room |
 | --- | --- |
-| `/` | Floor. Vault, eye, the night, your desks. |
+| `/` | Floor. The pixel, the tape, then the practice desk. |
+| `/wire` | The news. Alpha, the street, and the change in the market, with live numbers. |
+| `/blog` | Night Paper. Longer notes on Robinhood, the pixel, and what the rails can hold. |
+| `/guide` | The plain guide on the site. What to tap, what is real, and the addresses. |
+| `/og.png` | The share card. 1200×630. |
+| `/manifest.webmanifest` | Installable app manifest for the floor. |
 | `/pit` | Swap. |
 | `/showroom` | Listings. |
 | `/desk?id=` | One desk. Shift, claim, stock, list. |

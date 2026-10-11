@@ -8,11 +8,11 @@ export function night(file: string): string {
 export function tierArt(tier: Tier): string {
   switch (tier) {
     case "paper":
-      return night("desk-paper.jpg");
+      return night("desk-paper.webp");
     case "brass":
-      return night("desk-brass.jpg");
+      return night("desk-brass.webp");
     case "ink":
-      return night("desk-ink.jpg");
+      return night("desk-ink.webp");
     default: {
       const exhaustive: never = tier;
       return exhaustive;

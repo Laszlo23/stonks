@@ -10,6 +10,7 @@ import { deskNumber, formatAmount, parseAmount } from "@/lib/format";
 import { deskTale, tierTale } from "@/lib/stories";
 import { statusLabel, tierLabel } from "@/lib/types";
 import { gainOf, held, isMine, tillOf, useFloor } from "@/lib/useFloor";
+import { ShareBar } from "@/components/ShareBar";
 import { useMoves } from "@/lib/useMoves";
 
 export default function DeskPage() {
@@ -41,7 +42,7 @@ function DeskRoom({ id }: { id: string }) {
 
   return (
     <div className="grid items-start gap-8 lg:grid-cols-[20rem_minmax(0,36rem)]">
-      <img src={tierArt(desk.tier)} alt="" className="panel h-96 w-full object-cover" />
+      <img src={tierArt(desk.tier)} alt="" width={640} height={640} decoding="async" className="panel h-72 w-full object-cover sm:h-96" />
       <div>
       <Link href="/" className="label">
         Back to the floor
@@ -51,6 +52,13 @@ function DeskRoom({ id }: { id: string }) {
         <p className="chip">{tierLabel(desk.tier)}</p>
       </div>
       <p className="mt-3 max-w-md leading-relaxed text-ink/80">{tierTale(desk.tier)}</p>
+      <p className="mt-3 max-w-md text-sm leading-relaxed text-ink/60">
+        Practice coins. The till is fees plus new STONK. Neither is a promise, and neither is Global Dollar.{" "}
+        <Link href="/guide" className="text-brass">
+          Read the guide.
+        </Link>
+      </p>
+      <ShareBar id="desk" />
       <p className="mt-6 text-[11px] tracking-[0.16em]">{statusLabel(desk.status).toUpperCase()}</p>
       <p data-testid={`till-${id}`} className="mt-3 font-serif text-6xl tabular tracking-tight">
         {formatAmount(till)}

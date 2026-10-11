@@ -9,6 +9,7 @@ import { deskNumber, formatAmount } from "@/lib/format";
 import { showroomTale } from "@/lib/stories";
 import { tierLabel, tierNote, type Tier } from "@/lib/types";
 import { held, tillOf, useFloor } from "@/lib/useFloor";
+import { ShareBar } from "@/components/ShareBar";
 import { useMoves } from "@/lib/useMoves";
 
 export default function ShowroomPage() {
@@ -19,7 +20,7 @@ export default function ShowroomPage() {
   return (
     <div>
       <section className="panel relative mb-8 overflow-hidden">
-        <img src={night("street.webp")} alt="" className="h-56 w-full object-cover" />
+        <img src={night("street.webp")} alt="" width={800} height={450} loading="lazy" decoding="async" className="h-40 w-full object-cover sm:h-48" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/40 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
           <p className="label">The showroom</p>
@@ -27,6 +28,13 @@ export default function ShowroomPage() {
           <p className="mt-3 max-w-xl text-lg leading-relaxed">{showroomTale}</p>
         </div>
       </section>
+      <p className="text-sm leading-relaxed text-ink/60">
+        Practice desks. The ask is practice USDG. It is not the dollar on Robinhood Chain. The buyer gets the seat, the bag, and the tier.{" "}
+        <Link href="/guide" className="text-brass">
+          Read the guide.
+        </Link>
+      </p>
+      <ShareBar id="showroom" />
       {!ready ? <p className="mt-10">Looking across the room.</p> : null}
       {ready && listings.length === 0 ? <p className="mt-10">Nothing is for sale.</p> : null}
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

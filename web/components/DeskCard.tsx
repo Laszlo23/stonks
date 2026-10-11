@@ -23,7 +23,7 @@ export function DeskCard({ desk, quiet = false }: { desk: DeskRow; quiet?: boole
       className={`panel flex flex-col overflow-hidden ${desk.status === "onShift" ? "sitting" : ""}`}
     >
       <div className="relative">
-        <img src={tierArt(desk.tier)} alt="" className="h-48 w-full object-cover" />
+        <img src={tierArt(desk.tier)} alt="" width={640} height={640} loading="lazy" decoding="async" className="h-48 w-full object-cover" />
         <p className="chip absolute right-3 top-3">{tierLabel(desk.tier)}</p>
       </div>
       <div className="flex flex-1 flex-col p-5">

@@ -2,7 +2,7 @@ import { night } from "./art";
 import type { DeskStatus, Tier } from "./types";
 
 export const floorLead =
-  "Seat a desk. Stock the bag with USDG and STONK. Open the shift, and the bag becomes the pit. Every swap leaves a fee in the tills that are working. New STONK finds those same desks. An idle desk earns nothing. Fees and new STONK are the yield. Neither is a promise of profit.";
+  "Pick one thing. Take a pixel seat on the real chain, read today's numbers, or practice a desk with play coins. The guide says what each one is, in plain words.";
 
 export const chapters = [
   {
@@ -10,7 +10,7 @@ export const chapters = [
     src: night("coin.webp"),
     kicker: "01 · The coin",
     title: "Two coins, or no shift",
-    body: "USDG is the dollar. STONK is the other half of the bag. Draw both on this table, then put both in. One coin alone cannot open a shift. The till is the size of the pair, and it only moves while the desk is on the clock.",
+    body: "On this table, USDG plays the dollar. STONK is the other half of the bag. Draw both here, then put both in. One coin alone cannot open a shift. The till is the size of the pair, and it only moves while the desk is on the clock.",
   },
   {
     key: "bow",
@@ -44,7 +44,7 @@ export const steps = [
   {
     n: "02",
     title: "Draw",
-    body: "Take 10,000 USDG and 10,000 STONK. That is enough to stock a bag.",
+    body: "Take 10,000 practice USDG and 10,000 STONK. They exist only on this table. That is enough to stock a bag.",
   },
   {
     n: "03",

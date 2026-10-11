@@ -10,10 +10,14 @@ const rooms = [
   { key: "gm", label: "GM", href: "https://gm.aibusiness.fun/" },
   { key: "mine", label: "Mine", href: "https://mine.aibusiness.fun/" },
   { key: "seats", label: "Seats", href: "https://nft.aibusiness.fun/" },
+  { key: "keys", label: "Keys", href: "https://basefriend.tech/" },
 ] as const;
 
-const appLinks = [
+export const appLinks = [
   { href: "/", label: "Floor", testId: "nav-floor", icon: "floor" },
+  { href: "/wire", label: "Wire", testId: "nav-wire", icon: "wire" },
+  { href: "/blog", label: "Blog", testId: "nav-blog", icon: "blog" },
+  { href: "/guide", label: "Guide", testId: "nav-guide", icon: "guide" },
   { href: "/pit", label: "Pit", testId: "nav-pit", icon: "pit" },
   { href: "/showroom", label: "Showroom", testId: "nav-showroom", icon: "room" },
 ] as const;
@@ -25,6 +29,10 @@ const glyphs: Record<string, string> = {
   gm: '<circle cx="12" cy="12" r="3"/><path d="M12 3.5v2.2M12 18.3v2.2M3.5 12h2.2M18.3 12h2.2M6.1 6.1l1.5 1.5M16.4 16.4l1.5 1.5M17.9 6.1l-1.5 1.5M7.6 16.4l-1.5 1.5"/>',
   mine: '<path d="M4 16.5 14 6.5l3.5 3.5-10 10z"/><path d="M13 7.5 16.5 4 20 7.5 16.5 11"/>',
   seats: '<rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="9" y="13.5" width="6.5" height="6.5" rx="1"/>',
+  keys: '<circle cx="8" cy="12" r="3.2"/><path d="M11 12h9M17 12v3M20 12v2"/>',
+  wire: '<path d="M4 7h16M4 12h16M4 17h10"/>',
+  blog: '<path d="M6 4.5h8.5L18 8v11.5H6z"/><path d="M14.5 4.5V8H18M8.5 12h7M8.5 15.5h5"/>',
+  guide: '<circle cx="12" cy="12" r="8"/><path d="M9.2 9.6a2.8 2.8 0 1 1 3.6 2.7c-.8.3-1.3.9-1.3 1.7V15M12 17.6h.01"/>',
   pit: '<circle cx="9" cy="12" r="4"/><circle cx="15" cy="12" r="4"/>',
   room: '<rect x="4" y="5" width="16" height="14" rx="1.5"/><path d="M4 15l4-4 3 3 2.5-3 6.5 6"/>',
 };
@@ -60,7 +68,6 @@ export function Street() {
               <Link
                 key={link.href}
                 href={link.href}
-                data-testid={link.testId}
                 aria-current={active ? "page" : undefined}
               >
                 <Mark name={link.icon} />

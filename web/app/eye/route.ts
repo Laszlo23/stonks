@@ -1,4 +1,6 @@
 import { createPublicClient, http, zeroAddress, type Address } from "viem";
+
+export const revalidate = 30;
 import { robinhood } from "@/lib/chain";
 
 const tickpix = "0xa1F563AA9AFF537b8D1dD551B4DB9eFc9EC2D117" as const;
@@ -112,16 +114,19 @@ export async function GET() {
     hood = { priceUsd: null, poolUsd: null, volume24hUsd: null };
   }
 
-  return Response.json({
-    pixel: {
-      phase,
-      minted,
-      supply: 4663,
-      publicWei: priceRaw.toString(),
-      seats: "https://nft.aibusiness.fun/",
+  return Response.json(
+    {
+      pixel: {
+        phase,
+        minted,
+        supply: 4663,
+        publicWei: priceRaw.toString(),
+        seats: "https://nft.aibusiness.fun/",
+      },
+      hood,
+      seats: owners.flatMap((seat) => (seat ? [{ id: seat.id, owner: short(seat.owner) }] : [])),
+      fresh,
     },
-    hood,
-    seats: owners.flatMap((seat) => (seat ? [{ id: seat.id, owner: short(seat.owner) }] : [])),
-    fresh,
-  });
+    { headers: { "Cache-Control": "public, max-age=15, stale-while-revalidate=45" } },
+  );
 }

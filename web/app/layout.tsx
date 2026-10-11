@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter, Libre_Baskerville } from "next/font/google";
 import { Providers } from "./providers";
 import { Shell } from "@/components/Shell";
+import { pageMeta } from "@/lib/share";
 import "./globals.css";
 
 const serif = Libre_Baskerville({
@@ -18,8 +19,22 @@ const sans = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "The Floor · Night Ledger",
-  description: "Desks that earn, a room of Night Ledger on Robinhood Chain.",
+  ...pageMeta("floor"),
+  title: { default: "The Floor · Night Ledger", template: "%s · The Floor" },
+  applicationName: "The Floor",
+  authors: [{ name: "Night Ledger", url: "https://doghood.aibusiness.fun/" }],
+  icons: {
+    icon: [{ url: "https://doghood.aibusiness.fun/icon-192.png", sizes: "192x192", type: "image/png" }],
+    apple: [{ url: "https://doghood.aibusiness.fun/apple-touch-icon.png", sizes: "180x180" }],
+  },
+  appleWebApp: { capable: true, title: "The Floor", statusBarStyle: "black-translucent" },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#CCFF00",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 import { useAccount, useReadContract } from "wagmi";
 import { night } from "@/lib/art";
@@ -8,6 +9,7 @@ import { addresses, pitContract, seated } from "@/lib/contracts";
 import { formatAmount, parseAmount, toInput } from "@/lib/format";
 import { pitTale } from "@/lib/stories";
 import { otherSide, sideLabel, type Side } from "@/lib/types";
+import { ShareBar } from "@/components/ShareBar";
 import { useMoves } from "@/lib/useMoves";
 
 export default function PitPage() {
@@ -28,19 +30,19 @@ export default function PitPage() {
   const reservesU = useReadContract({
     ...pitContract,
     functionName: "reserveUsdg",
-    query: { enabled: seated, refetchInterval: 2000 },
+    query: { enabled: seated, refetchInterval: 10_000, refetchIntervalInBackground: false },
   });
   const reservesS = useReadContract({
     ...pitContract,
     functionName: "reserveStonk",
-    query: { enabled: seated, refetchInterval: 2000 },
+    query: { enabled: seated, refetchInterval: 10_000, refetchIntervalInBackground: false },
   });
   const balance = useReadContract({
     address: payToken,
     abi: tokenAbi,
     functionName: "balanceOf",
     args: address ? [address] : undefined,
-    query: { enabled: seated && Boolean(address), refetchInterval: 2000 },
+    query: { enabled: seated && Boolean(address), refetchInterval: 8_000, refetchIntervalInBackground: false },
   });
 
   const amountOut = quote.data?.[0] ?? 0n;
@@ -53,6 +55,13 @@ export default function PitPage() {
       <p className="label">The pit</p>
       <h1 className="mt-3 font-serif text-5xl tracking-tight">Swap</h1>
       <p className="mt-4 max-w-xl text-lg leading-relaxed">{pitTale}</p>
+      <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/60">
+        Practice coins. This pit is not a pool on Robinhood Chain. The fee stays in the working tills. It is not a promise of profit.
+      </p>
+      <Link href="/guide" className="mt-3 inline-block text-sm text-brass">
+        New here? Read the guide.
+      </Link>
+      <ShareBar id="pit" />
       <div className="panel mt-8 p-6">
         <div className="flex items-center justify-between">
           <label className="text-[11px] tracking-[0.16em]" htmlFor="swap-input">
@@ -122,7 +131,7 @@ export default function PitPage() {
       </p>
       </div>
       <aside className="panel overflow-hidden">
-        <img src={night("pool.webp")} alt="" className="h-72 w-full object-cover lg:h-[28rem]" />
+        <img src={night("pool.webp")} alt="" width={800} height={450} loading="lazy" decoding="async" className="h-72 w-full object-cover lg:h-[28rem]" />
         <div className="p-6">
           <p className="label">The pool</p>
           <p className="mt-3 leading-relaxed text-ink/80">

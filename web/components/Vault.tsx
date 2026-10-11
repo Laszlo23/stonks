@@ -27,8 +27,11 @@ export function Vault() {
 
   return (
     <section className="panel p-6">
-      <p className="label">The vault</p>
-      <h2 className="mt-2 font-serif text-4xl tracking-tight">Put the bag to work</h2>
+      <p className="label">03 · Practice table</p>
+      <h2 className="mt-2 font-serif text-4xl tracking-tight">Open a desk</h2>
+      <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink/60">
+        Practice coins. They are not the Global Dollar on Robinhood Chain. Your wallet confirms the move. An idle desk earns nothing. Fees and new STONK are the yield, and neither is a promise.
+      </p>
       <p className="mt-3 max-w-xl text-lg leading-relaxed text-ink/80">{line}</p>
       <div className="mt-6 flex flex-wrap gap-3">
         {!address ? <p className="text-sm text-ink/70">Connect a wallet. It confirms the open.</p> : null}

@@ -8,12 +8,13 @@ import { bagSize } from "./format";
 import { parseStatus, parseTier, type DeskRow } from "./types";
 
 const PER_DESK = 6;
+const READ_MS = 15_000;
 
 export function useFloor() {
   const next = useReadContract({
     ...deskContract,
     functionName: "nextId",
-    query: { enabled: seated, refetchInterval: 2000 },
+    query: { enabled: seated, refetchInterval: READ_MS, refetchIntervalInBackground: false },
   });
 
   const ids = useMemo(() => {
@@ -31,7 +32,7 @@ export function useFloor() {
       { ...pitContract, functionName: "position", args: [id] },
       { ...showroomContract, functionName: "listing", args: [id] },
     ]),
-    query: { enabled: seated && ids.length > 0, refetchInterval: 2000 },
+    query: { enabled: seated && ids.length > 0, refetchInterval: READ_MS, refetchIntervalInBackground: false },
   });
 
   const desks = useMemo(() => {

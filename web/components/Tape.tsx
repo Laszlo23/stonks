@@ -12,16 +12,16 @@ export function Tape() {
   const swap = useReadContract({
     ...pitContract,
     functionName: "lastSwap",
-    query: { enabled: seated && table === "anvil", refetchInterval: 2000 },
+    query: { enabled: seated && table === "anvil", refetchInterval: 15_000, refetchIntervalInBackground: false },
   });
 
-  let line = "The pit is quiet.";
+  let line = "Practice table. The pit is quiet.";
   if (seated && swap.data) {
     const [trader, usdgIn, amountIn, amountOut] = swap.data;
     if (trader !== zeroAddress && amountIn > 0n) {
       const paid: Side = usdgIn ? "usdg" : "stonk";
       const received: Side = usdgIn ? "stonk" : "usdg";
-      line = `${formatAmount(amountIn)} ${sideLabel(paid)} in → ${formatAmount(amountOut)} ${sideLabel(received)} · fee to the floor`;
+      line = `Practice table. ${formatAmount(amountIn)} ${sideLabel(paid)} in → ${formatAmount(amountOut)} ${sideLabel(received)} · fee stays in the till`;
     }
   }
   if (!seated) line = "The floor has no contracts yet.";
