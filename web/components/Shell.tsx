@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useReadContract, useAccount } from "wagmi";
 import { tokenAbi } from "@/lib/abi";
 import { addresses, seated } from "@/lib/contracts";
@@ -13,14 +12,7 @@ import { RobinhoodSeat } from "./RobinhoodSeat";
 import { Street } from "./Street";
 import { Tape } from "./Tape";
 
-const links = [
-  { href: "/", label: "Floor", testId: "nav-floor" },
-  { href: "/pit", label: "Pit", testId: "nav-pit" },
-  { href: "/showroom", label: "Showroom", testId: "nav-showroom" },
-];
-
 export function Shell({ children }: { children: React.ReactNode }) {
-  const pathname = usePathname();
   const { table, setTable } = useTable();
   const { address } = useAccount();
   const usdg = useReadContract({
@@ -44,7 +36,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       : null;
 
   return (
-    <div className="min-h-screen pb-16">
+    <div className="min-h-screen pb-24">
       <header className="border-b border-line">
         <div className="mx-auto flex max-w-6xl items-start justify-between gap-4 px-6 py-5">
           <Link href="/" className="flex shrink-0 items-center gap-3">
@@ -56,22 +48,8 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </Link>
           <Connect />
         </div>
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-3">
-          <nav className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
-            {links.map((link) => {
-              const active = link.href === "/" ? pathname === "/" : pathname.startsWith(link.href);
-              return (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  data-testid={link.testId}
-                  className={active ? "border-b border-brass pb-1 text-ink" : "border-b border-transparent pb-1 text-ink/55"}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </nav>
+        {process.env.NEXT_PUBLIC_WALLET_ONLY === "1" && !balances ? null : (
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-end gap-4 border-t border-line px-6 py-3">
           <div className="flex flex-wrap items-center gap-6">
             {process.env.NEXT_PUBLIC_WALLET_ONLY === "1" ? null : (
               <div className="flex items-center gap-3 text-[11px] tracking-[0.16em]">
@@ -97,6 +75,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             {balances ? <p className="text-[11px] tabular tracking-[0.06em] text-ink/70">{balances}</p> : null}
           </div>
         </div>
+        )}
         <Tape />
       </header>
       <main className="mx-auto max-w-6xl px-6 py-10">{table === "robinhood" ? <RobinhoodSeat /> : children}</main>

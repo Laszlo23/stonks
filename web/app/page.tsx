@@ -2,17 +2,15 @@
 
 import { useAccount } from "wagmi";
 import { DeskCard } from "@/components/DeskCard";
+import { StreetEye } from "@/components/StreetEye";
+import { Vault } from "@/components/Vault";
 import { night } from "@/lib/art";
-import { addresses, deskContract } from "@/lib/contracts";
-import { tokenAbi } from "@/lib/abi";
 import { chapters, floorLead, steps } from "@/lib/stories";
 import { isMine, useFloor } from "@/lib/useFloor";
-import { useMoves } from "@/lib/useMoves";
 
 export default function FloorPage() {
   const { address } = useAccount();
   const { desks, ready, error, seated: live } = useFloor();
-  const { pending, error: moveError, move, send } = useMoves();
   const mine = desks.filter((desk) => isMine(desk, address));
   const room = desks.filter((desk) => desk.status === "onShift" && !isMine(desk, address));
 
@@ -29,39 +27,10 @@ export default function FloorPage() {
         </div>
         <p className="max-w-3xl p-6 text-lg leading-relaxed text-ink/85 sm:p-8">{floorLead}</p>
       </section>
-      <div className="mt-6 flex flex-wrap gap-3">
-        <button
-          type="button"
-          data-testid="mint-desk"
-          disabled={pending !== null || !live}
-          className="btn-neon"
-          onClick={() =>
-            move("Minting…", async () => {
-              await send({ ...deskContract, functionName: "mint" });
-            })
-          }
-        >
-          {pending === "Minting…" ? "Minting…" : "Mint a desk"}
-        </button>
-        <button
-          type="button"
-          data-testid="draw-tokens"
-          disabled={pending !== null || !live}
-          className="btn-ghost"
-          onClick={() =>
-            move("Drawing…", async () => {
-              await send({ address: addresses.usdg, abi: tokenAbi, functionName: "faucet" });
-              await send({ address: addresses.stonk, abi: tokenAbi, functionName: "faucet" });
-            })
-          }
-        >
-          {pending === "Drawing…" ? "Drawing…" : "Draw 10,000"}
-        </button>
-        <a href="https://doghood.aibusiness.fun/" className="chip" target="_blank" rel="noreferrer">
-          Open the book
-        </a>
+      <div className="mt-6 grid items-start gap-4 lg:grid-cols-2">
+        <Vault />
+        <StreetEye />
       </div>
-      {moveError ? <p className="mt-3 text-[11px]">{moveError}</p> : null}
       <div className="mt-8 grid gap-4 sm:grid-cols-2">
         {chapters.map((chapter) => (
           <figure key={chapter.key} className="panel overflow-hidden">
