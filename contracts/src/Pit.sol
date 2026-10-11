@@ -17,6 +17,8 @@ contract Pit {
     Desk public immutable desk;
     Token public immutable usdg;
     Token public immutable stonk;
+    /// @dev Brings USDG up to 18 decimals for the till. Real USDG uses 6.
+    uint256 public immutable usdgScale;
 
     uint256 public reserveUsdg;
     uint256 public reserveStonk;
@@ -64,6 +66,9 @@ contract Pit {
         desk = desk_;
         usdg = usdg_;
         stonk = stonk_;
+        uint8 places = usdg_.decimals();
+        if (places > 18) revert BadAmount();
+        usdgScale = 10 ** (18 - places);
         lastUpdate = block.timestamp;
     }
 
@@ -267,9 +272,9 @@ contract Pit {
     }
 
     /// @dev Geometric size of a bag. Fees raise the product, so this rises.
-    function _bagSize(uint256 usdgAmt, uint256 stonkAmt) internal pure returns (uint256) {
+    function _bagSize(uint256 usdgAmt, uint256 stonkAmt) internal view returns (uint256) {
         if (usdgAmt == 0 || stonkAmt == 0) return 0;
-        return 2 * _sqrt(usdgAmt * stonkAmt);
+        return 2 * _sqrt(usdgAmt * usdgScale * stonkAmt);
     }
 
     function _multiplier(uint8 tier) internal pure returns (uint256) {

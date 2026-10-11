@@ -139,10 +139,7 @@ function browserWallet() {
     async switchChain({ chainId }) {
       const provider = getEthereum();
       if (!provider) throw new Error("No browser wallet");
-      await provider.request({
-        method: "wallet_switchEthereumChain",
-        params: [{ chainId: numberToHex(chainId) }],
-      });
+      await ensureChain(provider, chainId);
       if (chainId === robinhood.id) return robinhood;
       return anvil;
     },
@@ -155,11 +152,43 @@ function browserWallet() {
 export const PLAYER_A = "0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80" as const;
 export const PLAYER_B = "0x59c6995e998f97a5a0044966f0945389dc9e86dae88c7a8412f4603b6b78690d" as const;
 
+export async function ensureChain(provider: EIP1193Provider, chainId: number): Promise<void> {
+  const chainHex = numberToHex(chainId);
+  try {
+    await provider.request({
+      method: "wallet_switchEthereumChain",
+      params: [{ chainId: chainHex }],
+    });
+  } catch (error) {
+    const code = typeof error === "object" && error && "code" in error ? Number(error.code) : 0;
+    const message = error instanceof Error ? error.message : "";
+    const missing = code === 4902 || code === -32603 || /unrecognized|not added|unknown chain/i.test(message);
+    if (!missing) throw error;
+    const chain = chainId === robinhood.id ? robinhood : anvil;
+    await provider.request({
+      method: "wallet_addEthereumChain",
+      params: [
+        {
+          chainId: chainHex,
+          chainName: chain.name,
+          nativeCurrency: chain.nativeCurrency,
+          rpcUrls: chain.rpcUrls.default.http,
+          blockExplorerUrls: chain.blockExplorers ? [chain.blockExplorers.default.url] : [],
+        },
+      ],
+    });
+  }
+}
+
 export const config = createConfig({
   chains: [anvil, robinhood],
   connectors: [
-    anvilPlayer({ id: "anvil-player-a", name: "Player A", key: PLAYER_A }),
-    anvilPlayer({ id: "anvil-player-b", name: "Player B", key: PLAYER_B }),
+    ...(process.env.NEXT_PUBLIC_WALLET_ONLY === "1"
+      ? []
+      : [
+          anvilPlayer({ id: "anvil-player-a", name: "Player A", key: PLAYER_A }),
+          anvilPlayer({ id: "anvil-player-b", name: "Player B", key: PLAYER_B }),
+        ]),
     browserWallet(),
   ],
   transports: {

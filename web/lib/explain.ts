@@ -54,7 +54,7 @@ function reason(name: RevertName): string {
     case "BadId":
       return "That desk does not exist.";
     case "NotLocal":
-      return "The draw only works on the local table.";
+      return "The draw only works on the practice table.";
     default: {
       const exhaustive: never = name;
       return exhaustive;
@@ -70,11 +70,11 @@ export function explain(error: unknown): string {
       if (isRevertName(name)) return reason(name);
     }
     if (error.shortMessage.toLowerCase().includes("user rejected") || error.message.toLowerCase().includes("user rejected")) {
-      return "Cancelled.";
+      return "The wallet did not confirm.";
     }
   }
   if (error instanceof Error && error.message.toLowerCase().includes("user rejected")) {
-    return "Cancelled.";
+    return "The wallet did not confirm.";
   }
   return "The table refused the move.";
 }

@@ -53,11 +53,11 @@ export function tierLabel(tier: Tier): string {
 export function tierNote(tier: Tier): string {
   switch (tier) {
     case "paper":
-      return "Even share of the extra STONK when the floor is shared.";
+      return "One share of the new STONK.";
     case "brass":
-      return "A larger share of the extra STONK when the floor is shared.";
+      return "A quarter more new STONK than paper.";
     case "ink":
-      return "The largest share of the extra STONK when the floor is shared.";
+      return "Half again the new STONK that paper takes.";
     default: {
       const exhaustive: never = tier;
       return exhaustive;

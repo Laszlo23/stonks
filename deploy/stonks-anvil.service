@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=simple
 User=root
-ExecStart=/root/.foundry/bin/anvil --host 127.0.0.1 --port 8545 --block-time 1 --state /var/lib/stonks/anvil.json --state-interval 30
+ExecStart=/root/.foundry/bin/anvil --host 127.0.0.1 --port 8545 --chain-id 46631 --block-time 1 --state /var/lib/stonks/anvil.json --state-interval 30
 Restart=on-failure
 RestartSec=2
 KillSignal=SIGINT

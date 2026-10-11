@@ -2,10 +2,13 @@ import { defineChain } from "viem";
 import { foundry } from "viem/chains";
 
 export const anvilRpc = process.env.NEXT_PUBLIC_ANVIL_RPC || "http://127.0.0.1:8545";
+export const floorChainId = Number(process.env.NEXT_PUBLIC_ANVIL_CHAIN_ID || "31337");
 
 export const anvil = defineChain({
   ...foundry,
-  name: "Anvil",
+  id: floorChainId,
+  name: "The Floor",
+  nativeCurrency: { name: "Ether", symbol: "ETH", decimals: 18 },
   rpcUrls: {
     default: { http: [anvilRpc] },
   },

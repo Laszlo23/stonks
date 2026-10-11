@@ -4,7 +4,7 @@ import Link from "next/link";
 import { tierArt } from "@/lib/art";
 import { pitContract, showroomContract } from "@/lib/contracts";
 import { deskNumber, formatAmount } from "@/lib/format";
-import { statusLabel, tierLabel, type DeskRow } from "@/lib/types";
+import { statusLabel, tierLabel, tierNote, type DeskRow } from "@/lib/types";
 import { gainOf, held, tillOf } from "@/lib/useFloor";
 import { useMoves } from "@/lib/useMoves";
 
@@ -28,11 +28,12 @@ export function DeskCard({ desk, quiet = false }: { desk: DeskRow; quiet?: boole
       </div>
       <div className="flex flex-1 flex-col p-5">
         <div className="flex items-baseline justify-between">
-          <Link href={`/desk/${id}`} className="font-serif text-2xl tracking-tight">
+          <Link href={`/desk?id=${id}`} className="font-serif text-2xl tracking-tight">
             Desk {deskNumber(desk.id)}
           </Link>
           <p className="text-[11px] tracking-[0.14em] text-ink/60">{statusLabel(desk.status).toUpperCase()}</p>
         </div>
+        <p className="mt-2 text-sm leading-relaxed text-ink/70">{tierNote(desk.tier)}</p>
         <p data-testid={`till-${id}`} className="mt-5 font-serif text-[2.6rem] leading-none tabular tracking-tight">
           {formatAmount(till)}
         </p>
@@ -108,7 +109,7 @@ export function DeskCard({ desk, quiet = false }: { desk: DeskRow; quiet?: boole
               </button>
             ) : null}
             {desk.status === "idle" && !stocked ? (
-              <Link href={`/desk/${id}`} data-testid={`stock-${id}`} className="btn-ghost">
+              <Link href={`/desk?id=${id}`} data-testid={`stock-${id}`} className="btn-ghost">
                 Stock the bag
               </Link>
             ) : null}

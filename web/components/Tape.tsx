@@ -24,7 +24,7 @@ export function Tape() {
       line = `${formatAmount(amountIn)} ${sideLabel(paid)} in → ${formatAmount(amountOut)} ${sideLabel(received)} · fee to the floor`;
     }
   }
-  if (!seated) line = "The local table has no contracts yet.";
+  if (!seated) line = "The floor has no contracts yet.";
   if (table === "robinhood") line = "Watching Robinhood Chain. The floor is still local.";
 
   return (

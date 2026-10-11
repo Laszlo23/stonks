@@ -38,9 +38,9 @@ contract Token {
         _mint(to, amount);
     }
 
-    /// @dev Anvil only. Draws 10,000 tokens so a local desk can be stocked.
+    /// @dev Practice tables only. Robinhood Chain and Ethereum mainnet cannot mint from here.
     function faucet() external {
-        if (block.chainid != 31337) revert NotLocal();
+        if (block.chainid == 1 || block.chainid == 4663) revert NotLocal();
         _mint(msg.sender, 10_000 ether);
     }
 

@@ -6,6 +6,7 @@ import { night } from "@/lib/art";
 import { tokenAbi } from "@/lib/abi";
 import { addresses, pitContract, seated } from "@/lib/contracts";
 import { formatAmount, parseAmount, toInput } from "@/lib/format";
+import { pitTale } from "@/lib/stories";
 import { otherSide, sideLabel, type Side } from "@/lib/types";
 import { useMoves } from "@/lib/useMoves";
 
@@ -51,7 +52,7 @@ export default function PitPage() {
       <div>
       <p className="label">The pit</p>
       <h1 className="mt-3 font-serif text-5xl tracking-tight">Swap</h1>
-      <p className="mt-4 text-lg leading-relaxed">0.30% stays in the pit for desks on shift.</p>
+      <p className="mt-4 max-w-xl text-lg leading-relaxed">{pitTale}</p>
       <div className="panel mt-8 p-6">
         <div className="flex items-center justify-between">
           <label className="text-[11px] tracking-[0.16em]" htmlFor="swap-input">
@@ -125,7 +126,7 @@ export default function PitPage() {
         <div className="p-6">
           <p className="label">The pool</p>
           <p className="mt-3 leading-relaxed text-ink/80">
-            Desks on shift sit in this water. A swap ripples the bag. The fee stays with whoever is working.
+            You are the ripple. The fee does not go to the house. It stays with every desk that kept its shift open.
           </p>
         </div>
       </aside>

@@ -10,6 +10,7 @@ import { useTable } from "@/app/providers";
 import { night } from "@/lib/art";
 import { Connect } from "./Connect";
 import { RobinhoodSeat } from "./RobinhoodSeat";
+import { Street } from "./Street";
 import { Tape } from "./Tape";
 
 const links = [
@@ -37,8 +38,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
     query: { enabled: seated && table === "anvil" && Boolean(address), refetchInterval: 2000 },
   });
 
+  const balances =
+    address && table === "anvil" && seated
+      ? `${formatAmount(usdg.data ?? 0n)} USDG · ${formatAmount(stonk.data ?? 0n)} STONK`
+      : null;
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-16">
       <header className="border-b border-line">
         <div className="mx-auto flex max-w-6xl items-start justify-between gap-4 px-6 py-5">
           <Link href="/" className="flex shrink-0 items-center gap-3">
@@ -65,46 +71,42 @@ export function Shell({ children }: { children: React.ReactNode }) {
                 </Link>
               );
             })}
-            <a href="https://doghood.aibusiness.fun/" className="chip" target="_blank" rel="noreferrer">
-              The book
-            </a>
           </nav>
           <div className="flex flex-wrap items-center gap-6">
-            <div className="flex items-center gap-3 text-[11px] tracking-[0.16em]">
-              <button
-                type="button"
-                data-testid="chain-anvil"
-                onClick={() => setTable("anvil")}
-                className={table === "anvil" ? "text-brass" : "text-ink/40"}
-              >
-                ANVIL
-              </button>
-              <span className="text-line">/</span>
-              <button
-                type="button"
-                data-testid="chain-robinhood"
-                onClick={() => setTable("robinhood")}
-                className={table === "robinhood" ? "text-brass" : "text-ink/40"}
-              >
-                ROBINHOOD
-              </button>
-            </div>
-            <p className="text-[11px] tabular tracking-[0.06em] text-ink/70">
-              {address && table === "anvil" && seated
-                ? `${formatAmount(usdg.data ?? 0n)} USDG · ${formatAmount(stonk.data ?? 0n)} STONK`
-                : "—"}
-            </p>
+            {process.env.NEXT_PUBLIC_WALLET_ONLY === "1" ? null : (
+              <div className="flex items-center gap-3 text-[11px] tracking-[0.16em]">
+                <button
+                  type="button"
+                  data-testid="chain-anvil"
+                  onClick={() => setTable("anvil")}
+                  className={table === "anvil" ? "text-brass" : "text-ink/40"}
+                >
+                  ANVIL
+                </button>
+                <span className="text-line">/</span>
+                <button
+                  type="button"
+                  data-testid="chain-robinhood"
+                  onClick={() => setTable("robinhood")}
+                  className={table === "robinhood" ? "text-brass" : "text-ink/40"}
+                >
+                  ROBINHOOD
+                </button>
+              </div>
+            )}
+            {balances ? <p className="text-[11px] tabular tracking-[0.06em] text-ink/70">{balances}</p> : null}
           </div>
         </div>
         <Tape />
       </header>
       <main className="mx-auto max-w-6xl px-6 py-10">{table === "robinhood" ? <RobinhoodSeat /> : children}</main>
-      <footer className="mx-auto max-w-6xl px-6 pb-12 text-[12px] leading-relaxed tracking-[0.02em] text-ink/50">
+      <Street />
+      <footer className="mx-auto max-w-6xl px-6 pb-8 text-[12px] leading-relaxed tracking-[0.02em] text-ink/50">
         A room of{" "}
         <a className="text-brass" href="https://doghood.aibusiness.fun/" target="_blank" rel="noreferrer">
           Night Ledger
         </a>
-        . Third-party game aimed at Robinhood Chain. Not a Robinhood product. Seats A and B are shared practice keys. Yield is swap fees plus new STONK.
+        . The coin, the bow, the seed, the street. Third-party game aimed at Robinhood Chain. Not a Robinhood product. Your wallet confirms every move. Yield is swap fees plus new STONK.
       </footer>
     </div>
   );

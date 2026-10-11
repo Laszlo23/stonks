@@ -6,7 +6,8 @@ import { useAccount } from "wagmi";
 import { night, tierArt } from "@/lib/art";
 import { addresses, showroomContract } from "@/lib/contracts";
 import { deskNumber, formatAmount } from "@/lib/format";
-import { tierLabel, type Tier } from "@/lib/types";
+import { showroomTale } from "@/lib/stories";
+import { tierLabel, tierNote, type Tier } from "@/lib/types";
 import { held, tillOf, useFloor } from "@/lib/useFloor";
 import { useMoves } from "@/lib/useMoves";
 
@@ -23,9 +24,7 @@ export default function ShowroomPage() {
         <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8">
           <p className="label">The showroom</p>
           <h1 className="mt-2 font-serif text-5xl tracking-tight">Desks for sale</h1>
-          <p className="mt-3 max-w-xl text-lg leading-relaxed">
-            You buy the desk and the bag inside it. The bag does not move. The work starts again when you open a shift.
-          </p>
+          <p className="mt-3 max-w-xl text-lg leading-relaxed">{showroomTale}</p>
         </div>
       </section>
       {!ready ? <p className="mt-10">Looking across the room.</p> : null}
@@ -69,9 +68,10 @@ function Listing({
         <p className="chip absolute right-3 top-3">{tierLabel(tier)}</p>
       </div>
       <div className="p-5">
-      <Link href={`/desk/${deskId}`} className="font-serif text-2xl">
+      <Link href={`/desk?id=${deskId}`} className="font-serif text-2xl">
         Desk {deskNumber(id)}
       </Link>
+      <p className="mt-2 text-sm leading-relaxed text-ink/70">{tierNote(tier)}</p>
       <p className="mt-4 font-serif text-4xl tabular">{formatAmount(price)}</p>
       <p className="text-[11px] tracking-[0.14em] text-ink/50">USDG ASKED</p>
       <p className="mt-4 text-sm tabular">Till {formatAmount(till)}</p>

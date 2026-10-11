@@ -49,7 +49,7 @@ export function RobinhoodSeat() {
           {blockLine}
         </p>
         <p className="mt-3 max-w-lg text-lg leading-relaxed">
-          The Floor is not seated on this chain yet. The playable desks are on the local table.
+          The wood is Robinhood Chain. This room is not seated on it yet. The playable desks are on The Floor, and your wallet still confirms every move.
         </p>
         <a
           className="chip mt-6"

@@ -1,8 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import type { EIP1193Provider } from "viem";
 import { useAccount, useConnect, useDisconnect } from "wagmi";
+import { anvil } from "@/lib/chain";
 import { shortAddress } from "@/lib/format";
+import { ensureChain } from "@/lib/wagmi";
 
 export function Connect() {
   const { address, isConnected, connector } = useAccount();
@@ -19,15 +22,42 @@ export function Connect() {
     const next = connectors.find((item) => item.id === id);
     if (!next) return;
     setError(null);
+    if (id === "injected" && !(window as Window & { ethereum?: unknown }).ethereum) {
+      setError("This browser has no wallet.");
+      return;
+    }
     try {
       if (isConnected) await disconnectAsync();
-      await connectAsync({ connector: next, chainId: 31337 });
+      await connectAsync({ connector: next, chainId: anvil.id });
+      if (id === "injected") {
+        const provider = (await next.getProvider()) as EIP1193Provider;
+        await ensureChain(provider, anvil.id);
+      }
     } catch {
-      setError("Could not sit down.");
+      setError("The wallet did not confirm.");
     }
   }
 
   const active = mounted && isConnected ? connector?.id : undefined;
+
+  if (process.env.NEXT_PUBLIC_WALLET_ONLY === "1") {
+    return (
+      <div className="flex flex-col items-end gap-2">
+        <button
+          type="button"
+          data-testid="connect-wallet"
+          disabled={isPending}
+          onClick={() => (active === "injected" ? disconnectAsync() : sit("injected"))}
+          className="btn-neon"
+        >
+          {mounted && address ? shortAddress(address) : "Connect"}
+        </button>
+        <p className="text-[11px] tracking-[0.08em] text-ink/70">
+          {error ? error : "Your wallet confirms every move."}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-end gap-2">
@@ -61,7 +91,7 @@ export function Connect() {
         </button>
       </div>
       <p className="text-[11px] tracking-[0.08em] text-ink/70">
-        {mounted && address ? shortAddress(address) : "Sit a player"}
+        {mounted && address ? shortAddress(address) : "Connect a wallet"}
         {error ? ` · ${error}` : ""}
       </p>
     </div>
