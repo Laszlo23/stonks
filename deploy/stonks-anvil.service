@@ -1,0 +1,14 @@
+[Unit]
+Description=Stonks practice table (Anvil)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+ExecStart=/root/.foundry/bin/anvil --host 127.0.0.1 --port 8545 --block-time 1 --state /var/lib/stonks/anvil.json --dump-state /var/lib/stonks/anvil.json
+Restart=on-failure
+RestartSec=2
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target

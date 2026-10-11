@@ -1,0 +1,16 @@
+[Unit]
+Description=The Floor (Night Ledger)
+After=network.target stonks-anvil.service
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/stonks/web
+Environment=NODE_ENV=production
+Environment=ANVIL_UPSTREAM=http://127.0.0.1:8545
+ExecStart=/usr/bin/npm run start -- --hostname 127.0.0.1 --port 3030
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target
