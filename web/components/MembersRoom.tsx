@@ -151,7 +151,7 @@ export function MembersRoom() {
       <section className="panel mt-8 p-6 sm:p-8">
         <p className="label">{mine ? "Your card" : "Sign a card"}</p>
         <h2 className="mt-2 font-serif text-3xl">{address ? shortWallet(address) : "Connect a wallet"}</h2>
-        <form className="mt-5 grid gap-3" onSubmit={(event) => void save(event)}>
+        <form className="mt-6 grid gap-3" onSubmit={(event) => void save(event)}>
           <label className="grid gap-1 text-sm text-ink/70">
             Name
             <input

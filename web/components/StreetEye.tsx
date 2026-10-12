@@ -79,7 +79,7 @@ export function StreetEye() {
       {!eye && !failed ? <p className="mt-4">Reading the mint…</p> : null}
       {pixel && left !== null ? (
         <>
-          <p className="mt-3 max-w-2xl text-lg leading-relaxed text-ink/80">
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-ink/80">
             {open
               ? "A seat is a pixel. It does not earn, and it is not a share. The price and the count are the contract."
               : "The public mint is not open. This page will say when it is."}

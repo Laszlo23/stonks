@@ -76,7 +76,7 @@ export function Wire({ full = false, kicker = "The wire" }: { full?: boolean; ki
           </Link>
         )}
       </div>
-      <p className="mt-3 max-w-3xl text-lg leading-relaxed text-ink/80">
+      <p className="mt-6 max-w-3xl text-lg leading-relaxed text-ink/80">
         Stocks are moving as tokens. The dollar pool is the busy room. A Stock Token tracks a price. It does not make you a shareholder.
       </p>
       {full ? <ShareBar id="wire" /> : null}

@@ -43,7 +43,7 @@ export default function FloorPage() {
             <source src={night("intro.mp4")} type="video/mp4" />
           </video>
         </div>
-        <div className="p-6 sm:p-8">
+        <div className="px-6 pt-10 pb-6 sm:px-8 sm:pt-12 sm:pb-8">
           <p className="label">Hood Street</p>
           <h1 className="title-line mt-2 font-serif text-5xl tracking-tight sm:text-6xl">The pixel, the tape, the desk</h1>
           <p className="mt-4 max-w-3xl text-lg leading-relaxed text-ink/85">{floorLead}</p>

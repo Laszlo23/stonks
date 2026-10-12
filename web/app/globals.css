@@ -94,6 +94,14 @@ input {
   text-shadow: 0 0 14px rgba(204, 255, 0, 0.35);
 }
 
+main :is(h1, h2, h3).font-serif {
+  margin-top: 1rem;
+}
+
+main :is(h1, h2, h3).font-serif + :is(p, form) {
+  margin-top: 1.5rem;
+}
+
 .panel {
   border: 1px solid rgba(204, 255, 0, 0.18);
   border-radius: 20px;
