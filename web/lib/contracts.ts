@@ -1,6 +1,6 @@
 import { getAddress, zeroAddress, type Address } from "viem";
 import raw from "./addresses.json";
-import { deskAbi, pitAbi, showroomAbi } from "./abi";
+import { deskAbi, keysAbi, pitAbi, showroomAbi } from "./abi";
 
 export const addresses = {
   chainId: raw.chainId,
@@ -9,6 +9,7 @@ export const addresses = {
   showroom: getAddress(raw.showroom),
   stonk: getAddress(raw.stonk),
   usdg: getAddress(raw.usdg),
+  keys: getAddress(raw.keys),
 } as const;
 
 export const seated = addresses.desk !== zeroAddress;
@@ -26,6 +27,11 @@ export const pitContract = {
 export const showroomContract = {
   address: addresses.showroom,
   abi: showroomAbi,
+} as const;
+
+export const keysContract = {
+  address: addresses.keys,
+  abi: keysAbi,
 } as const;
 
 export function sameAddress(left?: Address | null, right?: Address | null): boolean {

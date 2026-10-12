@@ -11,7 +11,13 @@ type RevertName =
   | "BadAmount"
   | "BadPrice"
   | "BadId"
-  | "NotLocal";
+  | "NotLocal"
+  | "NoneHeld"
+  | "EmptyTill"
+  | "BadLabel"
+  | "BadCover"
+  | "Taken"
+  | "NotParent";
 
 function isRevertName(name: string): name is RevertName {
   switch (name) {
@@ -26,6 +32,12 @@ function isRevertName(name: string): name is RevertName {
     case "BadPrice":
     case "BadId":
     case "NotLocal":
+    case "NoneHeld":
+    case "EmptyTill":
+    case "BadLabel":
+    case "BadCover":
+    case "Taken":
+    case "NotParent":
       return true;
     default:
       return false;
@@ -55,6 +67,18 @@ function reason(name: RevertName): string {
       return "That desk does not exist.";
     case "NotLocal":
       return "The draw only works on the practice table.";
+    case "NoneHeld":
+      return "You do not hold that pass.";
+    case "EmptyTill":
+      return "There is no cover to take.";
+    case "BadLabel":
+      return "Use 3 to 32 letters, numbers, or a hyphen.";
+    case "BadCover":
+      return "The cover is 0.001 ETH.";
+    case "Taken":
+      return "That name is taken.";
+    case "NotParent":
+      return "street.hood is not seated on this contract.";
     default: {
       const exhaustive: never = name;
       return exhaustive;

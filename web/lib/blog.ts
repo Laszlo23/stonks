@@ -18,6 +18,102 @@ export type Post = {
 
 export const posts: Post[] = [
   {
+    slug: "september-belonged-to-robinhood",
+    date: "12 Oct 2026",
+    kicker: "The market",
+    title: "September belonged to Robinhood.",
+    lede: "In September, Robinhood took the largest share of on-chain stock-token trading. By 12 October the chain's day was quieter, and the deposits were still there.",
+    image: "street.webp",
+    source: "CoinDesk",
+    href: "https://www.coindesk.com/research/stablecoins-and-tokenized-assets-report-october-2026",
+    notes: [
+      {
+        source: "Pond Street Ledger, 12 Oct 2026",
+        href: "https://www.pondstreetledger.com/robinhood-chain/state-of-the-chain",
+      },
+    ],
+    blocks: [
+      {
+        type: "p",
+        text: "CoinDesk's September read, published 6 October, put on-chain tokenized-equity trading at $15.6 billion. That was a record, up 16.4 percent from August, and a little above July's $15.4 billion. Robinhood was the largest venue. Its volume rose 407 percent to $6.57 billion, a 42 percent share, from 9.7 percent in August. The next venue, bStocks, fell 45.5 percent to $5.42 billion.",
+      },
+      {
+        type: "quote",
+        text: "A record month names a venue. It does not make the market deep.",
+      },
+      {
+        type: "h",
+        text: "What was actually tokenized",
+      },
+      {
+        type: "p",
+        text: "The stock of tokenized equities grew 13.7 percent to $4.87 billion. Securitize held the most of that, at $1.62 billion, then Ondo at $1.00 billion and xStocks at $874 million. On Robinhood Chain, a Stock Token is a debt security. It tracks a price. It does not make the holder a shareholder.",
+      },
+      {
+        type: "h",
+        text: "The week after",
+      },
+      {
+        type: "p",
+        text: "Pond Street, reading the chain on 12 October, still counted $1.06 billion locked, up 1.5 percent on the week. DEX volume for the day was $574 million, down 40.2 percent on the week, about 54 percent of everything locked. Since the chain opened, 617,936 tokens had been given a market. Of those past their first week, about 1 in 296 was still trading. The chain was minting about 6,060 new tokens a day. September can be the loud month. A Tuesday can still be thin.",
+      },
+    ],
+  },
+  {
+    slug: "the-night-told-the-open",
+    date: "11 Oct 2026",
+    kicker: "The market",
+    title: "The night told the open.",
+    lede: "The IMF looked at tokenized stocks. Most of the trading happened while Wall Street was shut, and the opening bell caught up in five minutes. The market is still thin.",
+    image: "coin.webp",
+    source: "CoinDesk",
+    href: "https://www.coindesk.com/business/2026/10/11/imf-finds-demand-for-tokenized-stocks-says-the-market-is-still-volatile-illiquid",
+    notes: [
+      {
+        source: "Pond Street Ledger, 11 Oct 2026",
+        href: "https://www.pondstreetledger.com/robinhood-chain/state-of-the-chain",
+      },
+      {
+        source: "CoinDesk, 8 Oct 2026",
+        href: "https://www.coindesk.com/business/2026/10/08/securitize-brings-apple-nvidia-and-tesla-to-solana-with-nyse-trading-in-the-works",
+      },
+    ],
+    blocks: [
+      {
+        type: "p",
+        text: "The IMF's October Global Financial Stability Report looked at the five most traded tokenized US equities, including Tesla, Nvidia, Alphabet, and a Nasdaq 100 measure, on both centralized and decentralized venues. More than half of that trading happened outside regular US market hours. About 80 percent of the trades were for less than one share.",
+      },
+      {
+        type: "quote",
+        text: "The night can move a price. It does not make the market deep.",
+      },
+      {
+        type: "h",
+        text: "What the open did with it",
+      },
+      {
+        type: "p",
+        text: "The overnight move was not noise the day session ignored. Within five minutes of the US open, the regular shares had taken in more than 85 percent of how the tokens had moved while the exchanges were shut. The same tokens were about 1.5 times as volatile as the shares they track, and the IMF called them significantly less liquid.",
+      },
+      {
+        type: "p",
+        text: "The whole tokenized real-world asset market was about $65 billion on 31 July. Tokenized equities were about $2.3 billion of that. Listed stock worldwide was just under $160 trillion in 2025, by SIFMA's count. Robinhood is one of the places that lists tokenized stocks. On Robinhood Chain, a Stock Token is a debt instrument. It tracks a price. It does not make the holder a shareholder.",
+      },
+      {
+        type: "h",
+        text: "Two other shapes",
+      },
+      {
+        type: "p",
+        text: "On 8 October, Securitize put 12 US stocks on Solana, including Apple, Nvidia, and Tesla. CoinDesk reported that each token is backed by a share and is meant to keep dividends and voting rights. It is a security entitlement, not a line on the company's own register. Trading starts on Securitize's platform and settles in USDC. A listing on the NYSE's planned 24-hour venue, and on the venue OKX and ICE have filed for, still depends on those venues opening.",
+      },
+      {
+        type: "p",
+        text: "On this chain, the crowd of tokens is a different story. Pond Street, reading the chain on 11 October, counted $1.06 billion locked and $582 million of DEX volume in a day. Since the chain opened, 617,936 tokens had been given a market. Of those past their first week, about 1 in 296 was still trading. A live price is not a deep market, and a new token is not a stock.",
+      },
+    ],
+  },
+  {
     slug: "chain-slowed",
     date: "10 Oct 2026",
     kicker: "Robinhood",

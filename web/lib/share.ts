@@ -34,6 +34,26 @@ export const shares = {
     title: "The showroom",
     text: "Practice desks for sale. The bag and the tier come with the seat.",
   },
+  keys: {
+    path: "/keys",
+    title: "A pass",
+    text: "A practice pass to a desk. Play USDG. Holding it earns nothing.",
+  },
+  members: {
+    path: "/members",
+    title: "Members",
+    text: "A card with the socials you choose. A link is a hello. It earns nothing, and it is not a share.",
+  },
+  names: {
+    path: "/names",
+    title: "A name",
+    text: "A .hood name points at a wallet. Holding it earns nothing. If the parent lapses, it stops resolving.",
+  },
+  stock: {
+    path: "/stock",
+    title: "Stock tokens",
+    text: "A Stock Token tracks a price. It does not make the holder a shareholder.",
+  },
   desk: {
     path: "/desk",
     title: "A desk",

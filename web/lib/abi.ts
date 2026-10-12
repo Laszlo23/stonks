@@ -46,6 +46,91 @@ export const tokenAbi = [
   { type: "error", name: "ZeroAddress", inputs: [] },
 ] as const;
 
+export const keysAbi = [
+  {
+    type: "function",
+    name: "quoteBuy",
+    stateMutability: "view",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "amount", type: "uint256" },
+    ],
+    outputs: [
+      { name: "pay", type: "uint256" },
+      { name: "fee", type: "uint256" },
+    ],
+  },
+  {
+    type: "function",
+    name: "quoteSell",
+    stateMutability: "view",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "amount", type: "uint256" },
+    ],
+    outputs: [
+      { name: "back", type: "uint256" },
+      { name: "fee", type: "uint256" },
+    ],
+  },
+  {
+    type: "function",
+    name: "buy",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "amount", type: "uint256" },
+    ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "sell",
+    stateMutability: "nonpayable",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "amount", type: "uint256" },
+    ],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "draw",
+    stateMutability: "nonpayable",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [],
+  },
+  {
+    type: "function",
+    name: "supplyOf",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "balanceOf",
+    stateMutability: "view",
+    inputs: [
+      { name: "id", type: "uint256" },
+      { name: "holder", type: "address" },
+    ],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  {
+    type: "function",
+    name: "tillOf",
+    stateMutability: "view",
+    inputs: [{ name: "id", type: "uint256" }],
+    outputs: [{ name: "", type: "uint256" }],
+  },
+  { type: "error", name: "BadId", inputs: [] },
+  { type: "error", name: "BadAmount", inputs: [] },
+  { type: "error", name: "NoneHeld", inputs: [] },
+  { type: "error", name: "EmptyTill", inputs: [] },
+  { type: "error", name: "NotOwner", inputs: [] },
+] as const;
+
 export const deskAbi = [
   {
     type: "function",

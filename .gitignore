@@ -8,3 +8,4 @@ contracts/cache
 contracts/broadcast
 *.log
 *.tsbuildinfo
+web/.data

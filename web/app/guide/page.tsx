@@ -18,16 +18,22 @@ const jumps = [
 
 const rooms = [
   { name: "Book", href: "https://doghood.aibusiness.fun/", note: "The story. The coin, the bow, the seed, the street." },
+  { name: "Seats", href: "https://nft.aibusiness.fun/", note: "The pixel mint. This is the real chain." },
+  { name: "Names", href: "https://doghood.aibusiness.fun/floor/names", note: "A .hood name points at a wallet. The cover is 0.001 ETH. Holding it earns nothing. If street.hood lapses, the subnames stop resolving." },
   { name: "Floor", href: "https://doghood.aibusiness.fun/floor", note: "You are here. Pixel, numbers, practice desk." },
   { name: "Wire", href: "https://doghood.aibusiness.fun/floor/wire", note: "The news, with the source and the date on each note." },
   { name: "Blog", href: "https://doghood.aibusiness.fun/floor/blog", note: "Night Paper. Robinhood, the pixel, and what the rails can hold." },
   { name: "Pit", href: "https://doghood.aibusiness.fun/floor/pit", note: "Swap play coins. The fee stays in the open desks." },
   { name: "Showroom", href: "https://doghood.aibusiness.fun/floor/showroom", note: "Buy a practice desk, bag and tier included." },
   { name: "Dex", href: "https://dex.aibusiness.fun/", note: "Swaps on the real Robinhood Chain." },
-  { name: "GM", href: "https://gm.aibusiness.fun/", note: "Say GM on the real chain. A streak, not a payout." },
-  { name: "Mine", href: "https://mine.aibusiness.fun/", note: "A small field game. Three free cuts on this browser." },
-  { name: "Seats", href: "https://nft.aibusiness.fun/", note: "The pixel mint. This is the real chain." },
-  { name: "Keys", href: "https://basefriend.tech/", note: "BaseFriend. A key is a pass into a creator or club chat. DEGEN pays. It is not a share of the person." },
+  { name: "Stock", href: "https://doghood.aibusiness.fun/floor/stock", note: "Robinhood stock tokens. A debt security that tracks a price. Not a share. No buy button here." },
+  { name: "Keys", href: "https://doghood.aibusiness.fun/floor/keys", note: "A practice pass to a desk. Play USDG. The cover stays with the desk. Holding it earns nothing." },
+  { name: "Members", href: "https://doghood.aibusiness.fun/floor/members", note: "A card with the socials you choose. Link another member. A link is a hello. It earns nothing, and it is not a share." },
+  { name: "BaseFriend", href: "https://basefriend.tech/", note: "The other keys room, on Base. DEGEN pays. A listed name may not have joined." },
+  { name: "Greeting", href: "https://gm.aibusiness.fun/", note: "Say GM on the real chain. A streak, not a payout." },
+  { name: "Field", href: "https://mine.aibusiness.fun/", note: "A small field. Three free cuts on this browser." },
+  { name: "Hood", href: "https://dex.aibusiness.fun/rfgame", note: "Five castles with a Rare Friend. The HOOD on the score is simulated." },
+  { name: "Whale", href: "https://playwhale.io/", note: "A real-money casino and sportsbook. A bet can be lost." },
 ] as const;
 
 const words = [
@@ -42,6 +48,8 @@ const words = [
   { word: "Till", means: "The size of the bag. The screen shows a gain only when that size is above the size at open." },
   { word: "Pit", means: "The practice swap. Pay one play coin, receive the other. A small fee stays in the open tills." },
   { word: "Showroom", means: "Where a closed desk is for sale, coins included." },
+  { word: "Name", means: "A .hood name. alice.street.hood points at a wallet. Holding it earns nothing. If street.hood is not renewed, the subnames stop resolving." },
+  { word: "Pass", means: "A practice key to a desk. The price steps up by five. A 2% cover stays with the desk. Holding it earns nothing." },
   { word: "Paper, brass, ink", means: "The rarity of a desk. Paper is common. Brass takes a quarter more of new STONK. Ink takes half again. The chain rolls it once." },
 ] as const;
 
@@ -170,7 +178,7 @@ export default function GuidePage() {
       <section id="rooms" className="mt-14 scroll-mt-6 scroll-mb-24">
         <p className="label">The street</p>
         <h2 className="mt-2 font-serif text-4xl tracking-tight">Every room</h2>
-        <p className="mt-3 max-w-2xl text-ink/75">The bar at the bottom is the same on each room. Lime means you are there.</p>
+        <p className="mt-3 max-w-2xl text-ink/75">The lime chip at the bottom names the room you are in. Press it and the street rolls out: the book, the pixel, the name, the desk, the swap, the stock token, the pass, then the member card. After the line, the games sit together: the greeting, the field, the hood, and the whale. Scroll, and it tucks away. Lime means you are there.</p>
         <ul className="mt-6 grid gap-3 sm:grid-cols-2">
           {rooms.map((room) => (
             <li key={room.name} className="panel p-5">

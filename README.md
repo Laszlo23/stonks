@@ -13,10 +13,14 @@ One footer runs across the rooms. The street is on the left. The room you are in
 | Book | https://doghood.aibusiness.fun/ | Night Ledger. The coin, the bow, the seed, the street. |
 | Floor | https://doghood.aibusiness.fun/floor | The pixel, then the tape, then a practice desk. |
 | Dex | https://dex.aibusiness.fun/ | Swaps and NFTs on Robinhood Chain. |
-| GM | https://gm.aibusiness.fun/ | On-chain GM streaks on Robinhood Chain. |
-| Mine | https://mine.aibusiness.fun/ | HOOD//MINE. A field. Three cuts. Source in `Laszlo23/hoodmine`. |
+| Greeting | https://gm.aibusiness.fun/ | Say GM on Robinhood Chain. A streak, not a payout. |
+| Field | https://mine.aibusiness.fun/ | A small field. Three free cuts. Source in `Laszlo23/hoodmine`. |
+| Hood | https://dex.aibusiness.fun/rfgame | Five castles with a Rare Friend. The HOOD on the score is simulated. |
 | Seats | https://nft.aibusiness.fun/ | TICKPIX. Pixel seats on Robinhood Chain. |
-| Keys | https://basefriend.tech/ | BaseFriend. Keys for Farcaster creators and clubs, paid in DEGEN on Base. A key is a chat pass, not a share of the person. |
+| Names | https://doghood.aibusiness.fun/floor/names | A .hood name points at a wallet. Holding it earns nothing. If street.hood lapses, the subnames stop resolving. |
+| Stock | https://doghood.aibusiness.fun/floor/stock | Robinhood stock tokens. A debt security that tracks a price. Not a share. No buy button. |
+| Keys | https://doghood.aibusiness.fun/floor/keys | A practice pass to a desk. Play USDG. The cover stays with the desk. Holding it earns nothing. |
+| Whale | https://playwhale.io/ | A real-money casino and sportsbook. A bet can be lost. |
 | Aura OS | https://aibusiness.fun/ | The company operating system. Not part of the floor contracts. |
 | Aura Local | https://review.aibusiness.fun/ | Review requests after a real visit. |
 
